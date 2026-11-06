@@ -225,7 +225,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[#faf9f6] text-zinc-900 font-sans selection:bg-amber-600 selection:text-white relative overflow-x-hidden">
+    <div className="min-h-screen bg-[#faf9f6] text-zinc-900 font-sans selection:bg-stone-800 selection:text-white relative overflow-x-hidden">
       {/* BARRA DE NAVEGACIÓN STICKY */}
       <nav className="flex items-center justify-between px-6 md:px-12 py-5 border-b border-zinc-200/80 backdrop-blur-md bg-[#faf9f6]/90 sticky top-0 z-40">
         <div className="flex items-center gap-4">
@@ -246,7 +246,7 @@ export default function Home() {
           }} 
           className={`${fontElegante.className} text-2xl md:text-3xl font-bold tracking-[0.35em] cursor-pointer select-none text-center text-zinc-950`}
         >
-          ETERNUM<span className="text-amber-600 tracking-normal">.</span>
+          ETERNUM<span className="text-stone-700 tracking-normal">.</span>
         </div>
 
         <button
@@ -256,7 +256,7 @@ export default function Home() {
           <span>🛍️</span>
           <span className="hidden sm:inline">Carrito</span>
           {totalItems > 0 && (
-            <span className="bg-amber-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">
+            <span className="bg-stone-700 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">
               {totalItems}
             </span>
           )}
@@ -286,7 +286,7 @@ export default function Home() {
                   <button
                     onClick={() => seleccionarCategoria("todos")}
                     className={`text-left text-lg font-bold transition ${
-                      categoriaActiva === "todos" ? "text-amber-600 pl-2 border-l-2 border-amber-600" : "text-zinc-700 hover:text-zinc-950"
+                      categoriaActiva === "todos" ? "text-stone-900 pl-2 border-l-2 border-stone-900" : "text-zinc-700 hover:text-zinc-950"
                     }`}
                   >
                     Ver Todo el Catálogo
@@ -294,7 +294,7 @@ export default function Home() {
                   <button
                     onClick={() => seleccionarCategoria("conjunto")}
                     className={`text-left text-lg font-bold transition ${
-                      categoriaActiva === "conjunto" ? "text-amber-600 pl-2 border-l-2 border-amber-600" : "text-zinc-700 hover:text-zinc-950"
+                      categoriaActiva === "conjunto" ? "text-stone-900 pl-2 border-l-2 border-stone-900" : "text-zinc-700 hover:text-zinc-950"
                     }`}
                   >
                     Conjuntos Exclusivos
@@ -302,7 +302,7 @@ export default function Home() {
                   <button
                     onClick={() => seleccionarCategoria("camiseta")}
                     className={`text-left text-lg font-bold transition ${
-                      categoriaActiva === "camiseta" ? "text-amber-600 pl-2 border-l-2 border-amber-600" : "text-zinc-700 hover:text-zinc-950"
+                      categoriaActiva === "camiseta" ? "text-stone-900 pl-2 border-l-2 border-stone-900" : "text-zinc-700 hover:text-zinc-950"
                     }`}
                   >
                     Camisetas Heavyweight
@@ -310,7 +310,7 @@ export default function Home() {
                   <button
                     onClick={() => seleccionarCategoria("pantaloneta")}
                     className={`text-left text-lg font-bold transition ${
-                      categoriaActiva === "pantaloneta" ? "text-amber-600 pl-2 border-l-2 border-amber-600" : "text-zinc-700 hover:text-zinc-950"
+                      categoriaActiva === "pantaloneta" ? "text-stone-900 pl-2 border-l-2 border-stone-900" : "text-zinc-700 hover:text-zinc-950"
                     }`}
                   >
                     Pantalonetas
@@ -344,7 +344,7 @@ export default function Home() {
 
           {/* CONTENIDO DEL HERO */}
           <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
-            <span className="text-xs font-semibold tracking-[0.4em] text-amber-400 uppercase mb-6 border border-amber-400/40 px-5 py-2 rounded-full bg-black/40 backdrop-blur-md">
+            <span className="text-xs font-semibold tracking-[0.4em] text-stone-200 uppercase mb-6 border border-stone-300/40 px-5 py-2 rounded-full bg-black/40 backdrop-blur-md">
               High-End Streetwear
             </span>
             <h1 className={`${fontElegante.className} text-6xl md:text-9xl font-extrabold tracking-[0.25em] mb-6 text-white uppercase drop-shadow-2xl`}>
@@ -360,7 +360,7 @@ export default function Home() {
                   const catalogoElem = document.getElementById("catalogo");
                   if (catalogoElem) catalogoElem.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="px-9 py-4 bg-amber-500 hover:bg-amber-400 text-black font-bold rounded-full transition text-xs uppercase tracking-widest shadow-2xl"
+                className="px-9 py-4 bg-stone-100 hover:bg-white text-zinc-950 font-bold rounded-full transition text-xs uppercase tracking-widest shadow-2xl"
               >
                 Explorar Colección
               </button>
@@ -391,7 +391,7 @@ export default function Home() {
 
             <div className="flex flex-col justify-between">
               <div>
-                <span className="text-xs font-semibold text-amber-700 uppercase tracking-widest">{productoSeleccionado.categoria}</span>
+                <span className="text-xs font-semibold text-stone-700 uppercase tracking-widest">{productoSeleccionado.categoria}</span>
                 <h1 className="text-3xl md:text-4xl font-black text-zinc-950 mt-1 mb-3">{productoSeleccionado.nombre}</h1>
                 <p className="text-2xl font-extrabold text-zinc-900 mb-6">${productoSeleccionado.precio.toLocaleString("es-CO")} COP</p>
                 <p className="text-zinc-600 text-sm leading-relaxed mb-6">{productoSeleccionado.descripcion}</p>
@@ -405,7 +405,7 @@ export default function Home() {
                         onClick={() => setColorElegido(color.nombre)}
                         className={`px-4 py-2 rounded-xl text-xs font-bold border transition flex items-center gap-2 ${
                           (colorElegido === color.nombre || (!colorElegido && index === 0))
-                            ? "border-amber-600 bg-amber-50 text-zinc-950"
+                            ? "border-stone-900 bg-stone-100 text-zinc-950"
                             : "border-zinc-200 bg-white text-zinc-600 hover:border-zinc-300"
                         }`}
                       >
@@ -419,7 +419,7 @@ export default function Home() {
                 <div className="mb-6">
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-xs font-bold text-zinc-700 uppercase tracking-wider">Selecciona Talla:</span>
-                    <button onClick={() => setMostrarGuiaTallas(true)} className="text-xs text-amber-700 font-semibold hover:underline">
+                    <button onClick={() => setMostrarGuiaTallas(true)} className="text-xs text-stone-700 font-semibold hover:underline">
                       Guía de Tallas 📏
                     </button>
                   </div>
@@ -467,7 +467,7 @@ export default function Home() {
         <main id="catalogo" className="px-6 md:px-12 py-20 max-w-7xl mx-auto">
           <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-zinc-200 pb-6">
             <div>
-              <span className="text-xs font-semibold text-amber-700 uppercase tracking-widest">Catálogo Seleccionado</span>
+              <span className="text-xs font-semibold text-stone-700 uppercase tracking-widest">Catálogo Seleccionado</span>
               <h2 className="text-3xl font-bold tracking-tight capitalize mt-1 text-zinc-950">
                 {categoriaActiva === "todos" ? "Todas las Prendas & Drops" : `${categoriaActiva}s`}
               </h2>
@@ -511,19 +511,19 @@ export default function Home() {
                   setColorElegido(producto.colores[0].nombre);
                   setCantidadElegida(1);
                 }}
-                className="group border border-zinc-200/80 rounded-2xl p-5 bg-white hover:border-amber-600/50 hover:shadow-xl transition duration-300 cursor-pointer"
+                className="group border border-zinc-200/80 rounded-2xl p-5 bg-white hover:border-stone-400 hover:shadow-xl transition duration-300 cursor-pointer"
               >
                 <div className="h-72 bg-stone-100 rounded-xl mb-5 flex flex-col items-center justify-center text-zinc-400 font-bold group-hover:scale-[1.02] transition duration-300 relative overflow-hidden">
                   <span className="text-xs uppercase tracking-widest text-zinc-400">[ FOTO PRENDA ]</span>
                 </div>
 
-                <span className="text-xs text-amber-700 font-semibold uppercase tracking-wider">{producto.categoria}</span>
+                <span className="text-xs text-stone-700 font-semibold uppercase tracking-wider">{producto.categoria}</span>
                 <h3 className="text-xl font-bold mt-1 mb-2 text-zinc-950">{producto.nombre}</h3>
                 <p className="text-zinc-500 text-sm line-clamp-2 mb-4">{producto.descripcion}</p>
                 
                 <div className="flex justify-between items-center pt-3 border-t border-zinc-100">
                   <span className="text-lg font-extrabold text-zinc-950">${producto.precio.toLocaleString("es-CO")} COP</span>
-                  <span className="text-xs bg-zinc-950 text-white font-bold px-4 py-2 rounded-full group-hover:bg-amber-600 transition">
+                  <span className="text-xs bg-zinc-950 text-white font-bold px-4 py-2 rounded-full group-hover:bg-stone-800 transition">
                     Ver Prenda
                   </span>
                 </div>
@@ -543,7 +543,7 @@ export default function Home() {
             
             <table className="w-full text-left text-xs border-collapse mb-6">
               <thead>
-                <tr className="border-b border-zinc-200 text-amber-700">
+                <tr className="border-b border-zinc-200 text-stone-700">
                   <th className="py-2">Talla</th>
                   <th className="py-2">Ancho Pecho</th>
                   <th className="py-2">Largo</th>
@@ -584,7 +584,7 @@ export default function Home() {
                         <div>
                           <h4 className="font-bold text-zinc-950">{item.producto.nombre}</h4>
                           <span className="text-zinc-500">Color: {item.color} | Talla: <strong>{item.talla}</strong> | Cant: {item.cantidad}</span>
-                          <p className="font-bold text-amber-700 mt-0.5">${(item.producto.precio * item.cantidad).toLocaleString("es-CO")} COP</p>
+                          <p className="font-bold text-stone-700 mt-0.5">${(item.producto.precio * item.cantidad).toLocaleString("es-CO")} COP</p>
                         </div>
                         <button onClick={() => eliminarDelCarrito(index)} className="text-red-600 hover:underline text-xs">Eliminar</button>
                       </div>
@@ -592,21 +592,21 @@ export default function Home() {
                   </div>
 
                   <form id="form-envio" onSubmit={procesarPedido} className="space-y-3 border-t border-zinc-200 pt-4">
-                    <h4 className="text-xs font-bold text-amber-700 uppercase tracking-wider">Datos para el Envío:</h4>
+                    <h4 className="text-xs font-bold text-stone-700 uppercase tracking-wider">Datos para el Envío:</h4>
                     <div className="grid grid-cols-2 gap-2">
-                      <input type="text" name="nombre" placeholder="Nombre Completo *" required value={datosEnvio.nombre} onChange={handleChangeEnvio} className="bg-white border border-zinc-200 rounded-lg px-3 py-2 text-xs text-zinc-950 focus:outline-none focus:border-amber-600" />
-                      <input type="text" name="cedula" placeholder="Cédula / NIT *" required value={datosEnvio.cedula} onChange={handleChangeEnvio} className="bg-white border border-zinc-200 rounded-lg px-3 py-2 text-xs text-zinc-950 focus:outline-none focus:border-amber-600" />
+                      <input type="text" name="nombre" placeholder="Nombre Completo *" required value={datosEnvio.nombre} onChange={handleChangeEnvio} className="bg-white border border-zinc-200 rounded-lg px-3 py-2 text-xs text-zinc-950 focus:outline-none focus:border-stone-800" />
+                      <input type="text" name="cedula" placeholder="Cédula / NIT *" required value={datosEnvio.cedula} onChange={handleChangeEnvio} className="bg-white border border-zinc-200 rounded-lg px-3 py-2 text-xs text-zinc-950 focus:outline-none focus:border-stone-800" />
                     </div>
                     <div className="grid grid-cols-2 gap-2">
-                      <input type="tel" name="telefono" placeholder="Teléfono *" required value={datosEnvio.telefono} onChange={handleChangeEnvio} className="bg-white border border-zinc-200 rounded-lg px-3 py-2 text-xs text-zinc-950 focus:outline-none focus:border-amber-600" />
-                      <input type="text" name="ciudad" placeholder="Ciudad / Municipio *" required value={datosEnvio.ciudad} onChange={handleChangeEnvio} className="bg-white border border-zinc-200 rounded-lg px-3 py-2 text-xs text-zinc-950 focus:outline-none focus:border-amber-600" />
+                      <input type="tel" name="telefono" placeholder="Teléfono *" required value={datosEnvio.telefono} onChange={handleChangeEnvio} className="bg-white border border-zinc-200 rounded-lg px-3 py-2 text-xs text-zinc-950 focus:outline-none focus:border-stone-800" />
+                      <input type="text" name="ciudad" placeholder="Ciudad / Municipio *" required value={datosEnvio.ciudad} onChange={handleChangeEnvio} className="bg-white border border-zinc-200 rounded-lg px-3 py-2 text-xs text-zinc-950 focus:outline-none focus:border-stone-800" />
                     </div>
                     <div className="grid grid-cols-2 gap-2">
-                      <input type="text" name="departamento" placeholder="Departamento *" required value={datosEnvio.departamento} onChange={handleChangeEnvio} className="bg-white border border-zinc-200 rounded-lg px-3 py-2 text-xs text-zinc-950 focus:outline-none focus:border-amber-600" />
-                      <input type="text" name="barrio" placeholder="Barrio *" required value={datosEnvio.barrio} onChange={handleChangeEnvio} className="bg-white border border-zinc-200 rounded-lg px-3 py-2 text-xs text-zinc-950 focus:outline-none focus:border-amber-600" />
+                      <input type="text" name="departamento" placeholder="Departamento *" required value={datosEnvio.departamento} onChange={handleChangeEnvio} className="bg-white border border-zinc-200 rounded-lg px-3 py-2 text-xs text-zinc-950 focus:outline-none focus:border-stone-800" />
+                      <input type="text" name="barrio" placeholder="Barrio *" required value={datosEnvio.barrio} onChange={handleChangeEnvio} className="bg-white border border-zinc-200 rounded-lg px-3 py-2 text-xs text-zinc-950 focus:outline-none focus:border-stone-800" />
                     </div>
-                    <input type="text" name="direccion" placeholder="Dirección exacta de entrega *" required value={datosEnvio.direccion} onChange={handleChangeEnvio} className="w-full bg-white border border-zinc-200 rounded-lg px-3 py-2 text-xs text-zinc-950 focus:outline-none focus:border-amber-600" />
-                    <textarea name="notas" placeholder="Indicaciones adicionales" rows={2} value={datosEnvio.notas} onChange={handleChangeEnvio} className="w-full bg-white border border-zinc-200 rounded-lg px-3 py-2 text-xs text-zinc-950 focus:outline-none focus:border-amber-600"></textarea>
+                    <input type="text" name="direccion" placeholder="Dirección exacta de entrega *" required value={datosEnvio.direccion} onChange={handleChangeEnvio} className="w-full bg-white border border-zinc-200 rounded-lg px-3 py-2 text-xs text-zinc-950 focus:outline-none focus:border-stone-800" />
+                    <textarea name="notas" placeholder="Indicaciones adicionales" rows={2} value={datosEnvio.notas} onChange={handleChangeEnvio} className="w-full bg-white border border-zinc-200 rounded-lg px-3 py-2 text-xs text-zinc-950 focus:outline-none focus:border-stone-800"></textarea>
                   </form>
                 </>
               )}
@@ -615,7 +615,7 @@ export default function Home() {
             <div className="border-t border-zinc-200 pt-4 mt-4">
               <div className="flex justify-between text-base font-bold mb-4 text-zinc-950">
                 <span>Total a Pagar:</span>
-                <span className="text-amber-700">${totalCarrito.toLocaleString("es-CO")} COP</span>
+                <span className="text-stone-700">${totalCarrito.toLocaleString("es-CO")} COP</span>
               </div>
               <button
                 type="submit"
