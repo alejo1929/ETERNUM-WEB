@@ -42,7 +42,7 @@ interface DatosEnvio {
   notas: string;
 }
 
-// INVENTARIO ACTUALIZADO CON SOPORTE DINÁMICO DE LOGOS Y FOTOS
+// INVENTARIO ACTUALIZADO CON RUTAS DE FOTOS REales
 const PRODUCTOS: Producto[] = [
   {
     id: 1,
@@ -358,7 +358,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#faf9f6] text-zinc-900 font-sans selection:bg-stone-800 selection:text-white relative overflow-x-hidden">
-      <nav className="flex items-center justify-between px-6 md:px-12 py-5 border-b border-zinc-200/80 backdrop-blur-md bg-[#faf9f6]/90 sticky top-0 z-40">
+      <nav className="flex items-center justify-between px-6 md:px-12 py-4 border-b border-zinc-200/80 backdrop-blur-md bg-[#faf9f6]/90 sticky top-0 z-40">
         <div className="flex items-center gap-4">
           <button
             onClick={() => setMenuNavegacionAbierto(true)}
@@ -371,7 +371,7 @@ export default function Home() {
 
         <div 
           onClick={() => setProductoSeleccionado(null)} 
-          className={`${fontElegante.className} text-2xl md:text-3xl font-bold tracking-[0.35em] cursor-pointer select-none text-center text-zinc-950`}
+          className={`${fontElegante.className} text-xl md:text-3xl font-bold tracking-[0.3em] cursor-pointer select-none text-center text-zinc-950`}
         >
           ETERNUM<span className="text-stone-700 tracking-normal">.</span>
         </div>
@@ -381,12 +381,12 @@ export default function Home() {
             setPedidoConfirmado(false);
             setCarritoAbierto(true);
           }}
-          className="relative px-4 py-2 bg-zinc-950 text-white rounded-full text-sm font-semibold hover:bg-zinc-800 transition flex items-center gap-2 shadow-sm"
+          className="relative px-3.5 py-1.5 bg-zinc-950 text-white rounded-full text-xs font-semibold hover:bg-zinc-800 transition flex items-center gap-2 shadow-sm"
         >
           <span>🛍️</span>
           <span className="hidden sm:inline">Carrito</span>
           {totalItems > 0 && (
-            <span className="bg-stone-700 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">
+            <span className="bg-stone-700 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
               {totalItems}
             </span>
           )}
@@ -425,7 +425,7 @@ export default function Home() {
       )}
 
       {!productoSeleccionado && (
-        <section className="relative min-h-[85vh] flex flex-col items-center justify-center text-center px-6 border-b border-zinc-200/60 overflow-hidden">
+        <section className="relative py-20 md:py-32 flex flex-col items-center justify-center text-center px-6 border-b border-zinc-200/60 overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img 
               src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=1920" 
@@ -436,14 +436,14 @@ export default function Home() {
           </div>
 
           <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
-            <span className="text-xs font-semibold tracking-[0.4em] text-stone-200 uppercase mb-6 border border-stone-300/40 px-5 py-2 rounded-full bg-black/40 backdrop-blur-md">
+            <span className="text-[10px] md:text-xs font-semibold tracking-[0.3em] text-stone-200 uppercase mb-4 md:mb-6 border border-stone-300/40 px-4 py-1.5 rounded-full bg-black/40 backdrop-blur-md">
               Colección Exclusiva • Envío Gratis
             </span>
-            <h1 className={`${fontElegante.className} text-6xl md:text-9xl font-extrabold tracking-[0.25em] mb-6 text-white uppercase drop-shadow-2xl`}>
+            <h1 className={`${fontElegante.className} text-5xl sm:text-7xl md:text-9xl font-extrabold tracking-[0.2em] mb-4 md:mb-6 text-white uppercase drop-shadow-2xl`}>
               ETERNUM
             </h1>
-            <p className="text-zinc-200 text-sm md:text-lg max-w-xl font-light leading-relaxed mb-10 tracking-wide drop-shadow">
-              Conjuntos exclusivos de camiseta y pantaloneta con personalización de isotipo de autor. 
+            <p className="text-zinc-200 text-xs sm:text-sm md:text-lg max-w-xl font-light leading-relaxed mb-8 md:mb-10 tracking-wide drop-shadow px-4">
+              Conjuntos exclusivos de camiseta y pantaloneta en tonos seleccionados y 3 isotipos de autor. 
               $100.000 COP con envío nacional gratis.
             </p>
             <button 
@@ -451,7 +451,7 @@ export default function Home() {
                 const catalogoElem = document.getElementById("catalogo");
                 if (catalogoElem) catalogoElem.scrollIntoView({ behavior: "smooth" });
               }}
-              className="px-9 py-4 bg-stone-100 hover:bg-white text-zinc-950 font-bold rounded-full transition text-xs uppercase tracking-widest shadow-2xl"
+              className="px-8 py-3.5 bg-stone-100 hover:bg-white text-zinc-950 font-bold rounded-full transition text-[11px] uppercase tracking-widest shadow-2xl"
             >
               Explorar Catálogo
             </button>
@@ -460,24 +460,24 @@ export default function Home() {
       )}
 
       {productoSeleccionado ? (
-        <main className="max-w-7xl mx-auto px-6 md:px-12 py-12">
+        <main className="max-w-7xl mx-auto px-6 md:px-12 py-10">
           <button
             onClick={() => setProductoSeleccionado(null)}
-            className="text-xs text-zinc-500 hover:text-zinc-950 mb-8 flex items-center gap-2 transition"
+            className="text-xs text-zinc-500 hover:text-zinc-950 mb-6 flex items-center gap-2 transition"
           >
             &larr; Volver al Catálogo
           </button>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
             <div className="space-y-4">
-              <div className="h-[450px] md:h-[550px] rounded-2xl bg-stone-200 shadow-2xl relative overflow-hidden border border-zinc-200">
+              <div className="h-[380px] sm:h-[480px] md:h-[550px] rounded-2xl bg-stone-200 shadow-2xl relative overflow-hidden border border-zinc-200">
                 <img
                   src={productoSeleccionado.colores[0].imagenUrl}
                   alt={productoSeleccionado.nombre}
-                  className="w-full h-full object-cover object-center transition-all duration-300"
+                  className="w-full h-full object-cover object-center"
                 />
                 <span className="absolute bottom-4 left-4 text-xs bg-black/60 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 text-white">
-                  Mostrando diseño con isotipo: <strong>{logoElegido}</strong>
+                  Incluye Camiseta + Pantaloneta
                 </span>
               </div>
             </div>
@@ -485,10 +485,10 @@ export default function Home() {
             <div className="flex flex-col justify-between">
               <div>
                 <span className="text-xs font-semibold text-stone-700 uppercase tracking-widest">{productoSeleccionado.categoria}</span>
-                <h1 className="text-3xl md:text-4xl font-black text-zinc-950 mt-1 mb-2">{productoSeleccionado.nombre}</h1>
-                <p className="text-2xl font-extrabold text-zinc-900 mb-2">${productoSeleccionado.precio.toLocaleString("es-CO")} COP</p>
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-zinc-950 mt-1 mb-2">{productoSeleccionado.nombre}</h1>
+                <p className="text-xl md:text-2xl font-extrabold text-zinc-900 mb-2">${productoSeleccionado.precio.toLocaleString("es-CO")} COP</p>
                 <span className="inline-block text-xs font-bold bg-stone-200 text-stone-800 px-3 py-1 rounded-md mb-4">🚚 Envío Gratis a Todo Colombia</span>
-                <p className="text-zinc-600 text-sm leading-relaxed mb-6">{productoSeleccionado.descripcion}</p>
+                <p className="text-zinc-600 text-xs sm:text-sm leading-relaxed mb-6">{productoSeleccionado.descripcion}</p>
 
                 <div className="mb-6">
                   <span className="text-xs font-bold text-zinc-700 uppercase tracking-wider block mb-2">1. Elige el Logo del Conjunto:</span>
@@ -507,7 +507,7 @@ export default function Home() {
                             : "border-zinc-200 bg-white text-zinc-800 hover:border-zinc-300"
                         }`}
                       >
-                        <LogoGrafico tipo={logo} className="w-9 h-9" />
+                        <LogoGrafico tipo={logo} className="w-8 h-8" />
                         <span className="text-[10px] font-bold tracking-widest uppercase">Diseño {logo}</span>
                       </button>
                     ))}
@@ -567,7 +567,7 @@ export default function Home() {
 
               <button
                 onClick={agregarAlCarrito}
-                className="w-full bg-zinc-950 hover:bg-zinc-800 text-white font-bold py-4 rounded-xl transition shadow-xl text-xs uppercase tracking-widest"
+                className="w-full bg-zinc-950 hover:bg-zinc-800 text-white font-bold py-4 rounded-xl transition shadow-xl text-xs uppercase tracking-widest mt-4"
               >
                 Añadir al Carrito
               </button>
@@ -575,11 +575,11 @@ export default function Home() {
           </div>
         </main>
       ) : (
-        <main id="catalogo" className="px-6 md:px-12 py-20 max-w-7xl mx-auto">
-          <div className="mb-12 border-b border-zinc-200 pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <main id="catalogo" className="px-6 md:px-12 py-16 max-w-7xl mx-auto">
+          <div className="mb-10 border-b border-zinc-200 pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
               <span className="text-xs font-semibold text-stone-700 uppercase tracking-widest">Catálogo Físico Disponible</span>
-              <h2 className="text-3xl font-bold tracking-tight mt-1 text-zinc-950">
+              <h2 className="text-2xl md:text-3xl font-bold tracking-tight mt-1 text-zinc-950">
                 Elige tu Color ($100.000 • Envío Gratis)
               </h2>
             </div>
@@ -599,7 +599,7 @@ export default function Home() {
                   }}
                   className="group border border-zinc-200/80 rounded-2xl p-5 bg-white hover:border-stone-400 hover:shadow-xl transition duration-300 cursor-pointer"
                 >
-                  <div className="h-72 rounded-xl mb-5 bg-stone-100 group-hover:scale-[1.02] transition duration-300 relative overflow-hidden shadow-sm">
+                  <div className="h-64 sm:h-72 rounded-xl mb-5 bg-stone-100 group-hover:scale-[1.02] transition duration-300 relative overflow-hidden shadow-sm">
                     <img
                       src={producto.colores[0].imagenUrl}
                       alt={producto.nombre}
@@ -614,16 +614,16 @@ export default function Home() {
                   </div>
 
                   <span className="text-xs text-stone-700 font-semibold uppercase tracking-wider">{producto.categoria}</span>
-                  <h3 className="text-xl font-bold mt-1 mb-2 text-zinc-950">{producto.nombre}</h3>
-                  <p className="text-zinc-500 text-sm line-clamp-2 mb-4">{producto.descripcion}</p>
+                  <h3 className="text-lg md:text-xl font-bold mt-1 mb-2 text-zinc-950">{producto.nombre}</h3>
+                  <p className="text-zinc-500 text-xs sm:text-sm line-clamp-2 mb-4">{producto.descripcion}</p>
                   
                   <div className="flex justify-between items-center pt-3 border-t border-zinc-100">
                     <div>
-                      <span className="text-lg font-extrabold text-zinc-950">${producto.precio.toLocaleString("es-CO")}</span>
+                      <span className="text-base md:text-lg font-extrabold text-zinc-950">${producto.precio.toLocaleString("es-CO")}</span>
                       <span className="block text-[10px] text-emerald-600 font-bold">Envío Gratis</span>
                     </div>
-                    <span className="text-xs bg-zinc-950 text-white font-bold px-4 py-2 rounded-full group-hover:bg-stone-800 transition">
-                      Elegir Talla / Logo
+                    <span className="text-xs bg-zinc-950 text-white font-bold px-3.5 py-2 rounded-full group-hover:bg-stone-800 transition">
+                      Ver Tallas
                     </span>
                   </div>
                 </div>
