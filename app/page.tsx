@@ -17,7 +17,7 @@ interface VarianteStock {
 interface ProductoColor {
   nombre: string;
   clase: string;
-  imagenBg: string;
+  imagenUrl: string;
   inventario: VarianteStock[];
 }
 
@@ -42,7 +42,7 @@ interface DatosEnvio {
   notas: string;
 }
 
-// INVENTARIO REAL DE 48 CONJUNTOS ($100.000 COP - ENVÍO GRATIS)
+// INVENTARIO ACTUALIZADO CON FOTOS REALES DISPONIBLES ($100.000 COP - ENVÍO GRATIS)
 const PRODUCTOS: Producto[] = [
   {
     id: 1,
@@ -55,7 +55,7 @@ const PRODUCTOS: Producto[] = [
       {
         nombre: "Negro Ónix",
         clase: "bg-zinc-900 border-zinc-400",
-        imagenBg: "from-zinc-900 to-black",
+        imagenUrl: "/negro-onix.jpg",
         inventario: [
           { talla: "S", logo: "A&M", stock: 1 },
           { talla: "S", logo: "UX", stock: 1 },
@@ -80,7 +80,7 @@ const PRODUCTOS: Producto[] = [
       {
         nombre: "Rosado",
         clase: "bg-pink-300 border-pink-400",
-        imagenBg: "from-pink-200 to-rose-300",
+        imagenUrl: "/rosado.jpg",
         inventario: [
           { talla: "S", logo: "A&M", stock: 1 },
           { talla: "S", logo: "UX", stock: 1 },
@@ -104,7 +104,7 @@ const PRODUCTOS: Producto[] = [
       {
         nombre: "Café",
         clase: "bg-amber-900 border-amber-600",
-        imagenBg: "from-amber-900 to-stone-900",
+        imagenUrl: "/cafe.jpg",
         inventario: [
           { talla: "S", logo: "A&M", stock: 1 },
           { talla: "M", logo: "A&M", stock: 2 },
@@ -127,7 +127,7 @@ const PRODUCTOS: Producto[] = [
       {
         nombre: "Caqui",
         clase: "bg-stone-400 border-stone-500",
-        imagenBg: "from-stone-400 to-zinc-500",
+        imagenUrl: "/caqui.jpg",
         inventario: [
           { talla: "S", logo: "UX", stock: 1 },
           { talla: "S", logo: "A", stock: 1 },
@@ -148,7 +148,7 @@ const PRODUCTOS: Producto[] = [
       {
         nombre: "Agua Marina",
         clase: "bg-teal-300 border-teal-400",
-        imagenBg: "from-teal-200 to-cyan-300",
+        imagenUrl: "/aguamarina.jpg",
         inventario: [
           { talla: "S", logo: "A", stock: 1 },
           { talla: "M", logo: "A&M", stock: 1 },
@@ -168,7 +168,7 @@ const PRODUCTOS: Producto[] = [
       {
         nombre: "Azul",
         clase: "bg-blue-600 border-blue-700",
-        imagenBg: "from-blue-700 to-slate-900",
+        imagenUrl: "/azul.jpg",
         inventario: [
           { talla: "S", logo: "A&M", stock: 1 },
           { talla: "M", logo: "A", stock: 1 },
@@ -191,7 +191,7 @@ const PRODUCTOS: Producto[] = [
       {
         nombre: "Azul Claro",
         clase: "bg-sky-300 border-sky-400",
-        imagenBg: "from-sky-200 to-blue-300",
+        imagenUrl: "/azul-claro.jpg",
         inventario: [
           { talla: "S", logo: "A&M", stock: 1 },
           { talla: "M", logo: "A&M", stock: 1 },
@@ -213,31 +213,11 @@ const PRODUCTOS: Producto[] = [
       {
         nombre: "Azul Oscuro",
         clase: "bg-slate-900 border-slate-700",
-        imagenBg: "from-slate-900 to-zinc-950",
+        imagenUrl: "/azul-oscuro.jpg",
         inventario: [
           { talla: "S", logo: "UX", stock: 1 },
           { talla: "M", logo: "A", stock: 1 },
           { talla: "XL", logo: "UX", stock: 1 }
-        ]
-      }
-    ]
-  },
-  {
-    id: 9,
-    nombre: "Conjunto Blanco Crudo",
-    categoria: "Edición Limitada",
-    precio: 100000,
-    descripcion: "Conjunto exclusivo de pantaloneta más camiseta en impecable blanco.",
-    detalles: ["Camiseta oversize + Pantaloneta a juego", "Confección 100% Colombiana", "Envío Gratis incluido"],
-    colores: [
-      {
-        nombre: "Blanco",
-        clase: "bg-stone-100 border-stone-300",
-        imagenBg: "from-stone-100 to-stone-300",
-        inventario: [
-          { talla: "S", logo: "UX", stock: 1 },
-          { talla: "XL", logo: "UX", stock: 1 },
-          { talla: "XL", logo: "A", stock: 1 }
         ]
       }
     ]
@@ -253,7 +233,7 @@ const PRODUCTOS: Producto[] = [
       {
         nombre: "Rojo",
         clase: "bg-red-600 border-red-700",
-        imagenBg: "from-red-600 to-rose-900",
+        imagenUrl: "/rojo.jpg",
         inventario: [
           { talla: "S", logo: "UX", stock: 1 },
           { talla: "M", logo: "UX", stock: 1 },
@@ -269,7 +249,6 @@ const LogoGrafico = ({ tipo, className = "w-8 h-8" }: { tipo: "A&M" | "UX" | "A"
   if (tipo === "A&M") {
     return (
       <svg viewBox="0 0 100 100" className={className} fill="none" stroke="currentColor">
-        {/* Monograma cursivo A y M entrelazadas */}
         <path d="M22 76 L34 22 L48 64 L64 22 L76 76" strokeWidth="5.5" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M26 56 C38 42, 62 42, 74 56" strokeWidth="4.5" strokeLinecap="round" />
         <path d="M36 28 C20 35, 22 65, 42 70 C58 74, 78 60, 72 36" strokeWidth="3.5" strokeLinecap="round" />
@@ -279,7 +258,6 @@ const LogoGrafico = ({ tipo, className = "w-8 h-8" }: { tipo: "A&M" | "UX" | "A"
   if (tipo === "UX") {
     return (
       <svg viewBox="0 0 110 100" className={className}>
-        {/* 'u' minúscula sólida + 'X' inclinada con contorno */}
         <path
           d="M15 44 H28 V63 C28 67, 34 67, 34 63 V44 H47 V76 H34 V71 C31 75, 24 77, 19 74 C16 72, 15 68, 15 63 Z"
           fill="currentColor"
@@ -294,7 +272,6 @@ const LogoGrafico = ({ tipo, className = "w-8 h-8" }: { tipo: "A&M" | "UX" | "A"
       </svg>
     );
   }
-  // Logotipo A angular moderno con corte inferior izquierdo
   return (
     <svg viewBox="0 0 100 100" className={className} fill="currentColor">
       <path d="M50 16 L84 82 L67 82 L58 63 L39 63 L52 53 L43 35 L28 68 L48 68 L41 82 L16 82 Z" />
@@ -314,7 +291,6 @@ export default function Home() {
   const [menuNavegacionAbierto, setMenuNavegacionAbierto] = useState<boolean>(false);
   const [pedidoConfirmado, setPedidoConfirmado] = useState<boolean>(false);
 
-  // Número exclusivo para soporte, dudas o quejas
   const NUMERO_WHATSAPP_SOPORTE = "573000000000";
 
   const [datosEnvio, setDatosEnvio] = useState<DatosEnvio>({
@@ -392,7 +368,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#faf9f6] text-zinc-900 font-sans selection:bg-stone-800 selection:text-white relative overflow-x-hidden">
-      {/* BARRA DE NAVEGACIÓN */}
       <nav className="flex items-center justify-between px-6 md:px-12 py-5 border-b border-zinc-200/80 backdrop-blur-md bg-[#faf9f6]/90 sticky top-0 z-40">
         <div className="flex items-center gap-4">
           <button
@@ -428,7 +403,6 @@ export default function Home() {
         </button>
       </nav>
 
-      {/* MENÚ LATERAL EXCLUSIVO PARA SOPORTE / QUEJAS / ASESORÍA WHATSAPP */}
       {menuNavegacionAbierto && (
         <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex">
           <div className="bg-[#faf9f6] border-r border-zinc-200 w-full max-w-sm h-full p-8 flex flex-col justify-between shadow-2xl">
@@ -464,7 +438,6 @@ export default function Home() {
         </div>
       )}
 
-      {/* HERO SECTION */}
       {!productoSeleccionado && (
         <section className="relative min-h-[85vh] flex flex-col items-center justify-center text-center px-6 border-b border-zinc-200/60 overflow-hidden">
           <div className="absolute inset-0 z-0">
@@ -484,7 +457,7 @@ export default function Home() {
               ETERNUM
             </h1>
             <p className="text-zinc-200 text-sm md:text-lg max-w-xl font-light leading-relaxed mb-10 tracking-wide drop-shadow">
-              Conjuntos exclusivos de camiseta y pantaloneta en 10 tonos seleccionados y 3 isotipos de autor. 
+              Conjuntos exclusivos de camiseta y pantaloneta en tonos seleccionados y 3 isotipos de autor. 
               $100.000 COP con envío nacional gratis.
             </p>
             <button 
@@ -500,7 +473,6 @@ export default function Home() {
         </section>
       )}
 
-      {/* DETALLE DE PRODUCTO CON LOGOS VECTORIALES Y STOCK EN VIVO */}
       {productoSeleccionado ? (
         <main className="max-w-7xl mx-auto px-6 md:px-12 py-12">
           <button
@@ -512,10 +484,13 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div className="space-y-4">
-              <div className={`h-[450px] md:h-[550px] rounded-2xl flex flex-col items-center justify-center text-white font-bold bg-gradient-to-br ${productoSeleccionado.colores[0].imagenBg} shadow-2xl relative overflow-hidden border border-zinc-300/20`}>
-                <span className="text-xs uppercase tracking-widest opacity-60 mb-2">[ FOTO PRENDA REAL ]</span>
-                <span className={`${fontElegante.className} text-3xl tracking-widest`}>{productoSeleccionado.nombre}</span>
-                <span className="absolute bottom-6 text-xs bg-black/40 backdrop-blur-md px-5 py-2 rounded-full border border-white/20 text-stone-200">
+              <div className="h-[450px] md:h-[550px] rounded-2xl bg-stone-200 shadow-2xl relative overflow-hidden border border-zinc-200">
+                <img
+                  src={productoSeleccionado.colores[0].imagenUrl}
+                  alt={productoSeleccionado.nombre}
+                  className="w-full h-full object-cover object-center"
+                />
+                <span className="absolute bottom-4 left-4 text-xs bg-black/60 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 text-white">
                   Incluye Camiseta + Pantaloneta
                 </span>
               </div>
@@ -529,7 +504,6 @@ export default function Home() {
                 <span className="inline-block text-xs font-bold bg-stone-200 text-stone-800 px-3 py-1 rounded-md mb-4">🚚 Envío Gratis a Todo Colombia</span>
                 <p className="text-zinc-600 text-sm leading-relaxed mb-6">{productoSeleccionado.descripcion}</p>
 
-                {/* SELECTOR DE LOGO CON GRÁFICO VECTORIAL REAL */}
                 <div className="mb-6">
                   <span className="text-xs font-bold text-zinc-700 uppercase tracking-wider block mb-2">1. Elige el Logo del Conjunto:</span>
                   <div className="grid grid-cols-3 gap-3">
@@ -554,7 +528,6 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* SELECTOR DE TALLA CON VERIFICACIÓN DE STOCK EN VIVO */}
                 <div className="mb-6">
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-xs font-bold text-zinc-700 uppercase tracking-wider">2. Selecciona Talla (Stock real):</span>
@@ -596,7 +569,6 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* CANTIDAD */}
                 <div className="mb-6">
                   <span className="text-xs font-bold text-zinc-700 uppercase tracking-wider block mb-2">Cantidad:</span>
                   <div className="flex items-center gap-4 bg-white border border-zinc-200 rounded-xl w-fit px-4 py-2">
@@ -617,7 +589,6 @@ export default function Home() {
           </div>
         </main>
       ) : (
-        /* CATÁLOGO PRINCIPAL POR COLOR (OPCIÓN A) */
         <main id="catalogo" className="px-6 md:px-12 py-20 max-w-7xl mx-auto">
           <div className="mb-12 border-b border-zinc-200 pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
@@ -642,13 +613,16 @@ export default function Home() {
                   }}
                   className="group border border-zinc-200/80 rounded-2xl p-5 bg-white hover:border-stone-400 hover:shadow-xl transition duration-300 cursor-pointer"
                 >
-                  <div className={`h-72 rounded-xl mb-5 flex flex-col items-center justify-center text-white font-bold bg-gradient-to-br ${producto.colores[0].imagenBg} group-hover:scale-[1.02] transition duration-300 relative overflow-hidden shadow-md`}>
-                    <span className="text-xs uppercase tracking-widest opacity-60 mb-2">[ FOTO PRENDA ]</span>
-                    <span className={`${fontElegante.className} text-xl tracking-wider`}>{producto.nombre}</span>
-                    <span className="absolute top-3 right-3 text-[10px] bg-black/50 text-white px-3 py-1 rounded-full backdrop-blur-sm">
+                  <div className="h-72 rounded-xl mb-5 bg-stone-100 group-hover:scale-[1.02] transition duration-300 relative overflow-hidden shadow-sm">
+                    <img
+                      src={producto.colores[0].imagenUrl}
+                      alt={producto.nombre}
+                      className="w-full h-full object-cover object-center"
+                    />
+                    <span className="absolute top-3 right-3 text-[10px] bg-black/60 text-white px-3 py-1 rounded-full backdrop-blur-sm">
                       {totalUnidadesColor} unid. en stock
                     </span>
-                    <span className="absolute bottom-4 text-[10px] bg-black/40 px-3 py-1 rounded-full backdrop-blur-sm border border-white/20">
+                    <span className="absolute bottom-3 left-3 text-[10px] bg-black/50 text-white px-3 py-1 rounded-full backdrop-blur-sm">
                       Pantaloneta + Camiseta
                     </span>
                   </div>
@@ -673,7 +647,6 @@ export default function Home() {
         </main>
       )}
 
-      {/* MODAL GUÍA DE TALLAS */}
       {mostrarGuiaTallas && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-[#faf9f6] border border-zinc-200 rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
@@ -704,7 +677,6 @@ export default function Home() {
         </div>
       )}
 
-      {/* CARRITO Y CHECKOUT DIRECTO EN LA PÁGINA */}
       {carritoAbierto && (
         <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex justify-end">
           <div className="bg-[#faf9f6] border-l border-zinc-200 w-full max-w-lg h-full p-6 flex flex-col justify-between overflow-y-auto shadow-2xl">
@@ -787,7 +759,6 @@ export default function Home() {
         </div>
       )}
 
-      {/* PIE DE PÁGINA */}
       <footer className="px-6 md:px-12 py-8 border-t border-zinc-200 text-zinc-500 text-xs flex flex-col md:flex-row justify-between items-center gap-4">
         <div>© 2026 ETERNUM. Todos los derechos reservados.</div>
         <div className="flex gap-4">
