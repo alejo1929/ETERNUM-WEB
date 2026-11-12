@@ -42,7 +42,7 @@ interface DatosEnvio {
   notas: string;
 }
 
-// INVENTARIO ACTUALIZADO CON RUTAS DE FOTOS REales
+// INVENTARIO ACTUALIZADO CON FOTOS REALES
 const PRODUCTOS: Producto[] = [
   {
     id: 1,
@@ -358,20 +358,20 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#faf9f6] text-zinc-900 font-sans selection:bg-stone-800 selection:text-white relative overflow-x-hidden">
-      <nav className="flex items-center justify-between px-6 md:px-12 py-4 border-b border-zinc-200/80 backdrop-blur-md bg-[#faf9f6]/90 sticky top-0 z-40">
-        <div className="flex items-center gap-4">
+      <nav className="flex items-center justify-between px-4 sm:px-8 py-3 border-b border-zinc-200/80 backdrop-blur-md bg-[#faf9f6]/90 sticky top-0 z-40">
+        <div className="flex items-center gap-2">
           <button
             onClick={() => setMenuNavegacionAbierto(true)}
             className="p-2 rounded-lg bg-stone-100 border border-zinc-200 hover:bg-stone-200 transition flex items-center gap-2"
           >
-            <span className="text-xl leading-none text-zinc-900">☰</span>
-            <span className="text-xs uppercase tracking-widest text-zinc-600 hidden sm:inline">Soporte / Dudas</span>
+            <span className="text-lg leading-none text-zinc-900">☰</span>
+            <span className="text-[11px] uppercase tracking-widest text-zinc-600 hidden sm:inline">Soporte</span>
           </button>
         </div>
 
         <div 
           onClick={() => setProductoSeleccionado(null)} 
-          className={`${fontElegante.className} text-xl md:text-3xl font-bold tracking-[0.3em] cursor-pointer select-none text-center text-zinc-950`}
+          className={`${fontElegante.className} text-xl sm:text-2xl font-bold tracking-[0.25em] cursor-pointer select-none text-center text-zinc-950`}
         >
           ETERNUM<span className="text-stone-700 tracking-normal">.</span>
         </div>
@@ -381,7 +381,7 @@ export default function Home() {
             setPedidoConfirmado(false);
             setCarritoAbierto(true);
           }}
-          className="relative px-3.5 py-1.5 bg-zinc-950 text-white rounded-full text-xs font-semibold hover:bg-zinc-800 transition flex items-center gap-2 shadow-sm"
+          className="relative px-3 py-1.5 bg-zinc-950 text-white rounded-full text-xs font-semibold hover:bg-zinc-800 transition flex items-center gap-1.5 shadow-sm"
         >
           <span>🛍️</span>
           <span className="hidden sm:inline">Carrito</span>
@@ -395,27 +395,27 @@ export default function Home() {
 
       {menuNavegacionAbierto && (
         <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex">
-          <div className="bg-[#faf9f6] border-r border-zinc-200 w-full max-w-sm h-full p-8 flex flex-col justify-between shadow-2xl">
+          <div className="bg-[#faf9f6] border-r border-zinc-200 w-full max-w-sm h-full p-6 flex flex-col justify-between shadow-2xl">
             <div>
-              <div className="flex justify-between items-center mb-10">
-                <span className={`${fontElegante.className} text-2xl font-bold tracking-[0.3em] text-zinc-950`}>
+              <div className="flex justify-between items-center mb-8">
+                <span className={`${fontElegante.className} text-xl font-bold tracking-[0.25em] text-zinc-950`}>
                   ETERNUM
                 </span>
-                <button onClick={() => setMenuNavegacionAbierto(false)} className="text-zinc-500 hover:text-zinc-950 text-2xl font-bold">✕</button>
+                <button onClick={() => setMenuNavegacionAbierto(false)} className="text-zinc-500 hover:text-zinc-950 text-xl font-bold">✕</button>
               </div>
 
-              <div className="space-y-6">
-                <span className="text-xs font-semibold uppercase tracking-widest text-zinc-400 block">Canal de Atención</span>
-                <p className="text-sm text-zinc-600 leading-relaxed">
-                  ¿Tienes dudas sobre alguna talla, soporte postventa o deseas asesoría directa? Escríbenos a nuestro WhatsApp oficial.
+              <div className="space-y-4">
+                <span className="text-[10px] font-semibold uppercase tracking-widest text-zinc-400 block">Canal de Atención</span>
+                <p className="text-xs text-zinc-600 leading-relaxed">
+                  ¿Tienes dudas sobre tallas, soporte postventa o deseas asesoría? Escríbenos al WhatsApp oficial.
                 </p>
                 <a
                   href={`https://wa.me/${NUMERO_WHATSAPP_SOPORTE}?text=${encodeURIComponent("Hola ETERNUM, necesito ayuda / tengo una consulta.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full bg-zinc-950 hover:bg-zinc-800 text-white font-bold py-3.5 rounded-xl transition flex items-center justify-center gap-2 text-xs uppercase tracking-widest shadow-md"
+                  className="w-full bg-zinc-950 hover:bg-zinc-800 text-white font-bold py-3 rounded-xl transition flex items-center justify-center gap-2 text-[11px] uppercase tracking-widest shadow-md"
                 >
-                  <span>💬</span> Contactar Soporte WhatsApp
+                  <span>💬</span> WhatsApp Soporte
                 </a>
               </div>
             </div>
@@ -425,7 +425,7 @@ export default function Home() {
       )}
 
       {!productoSeleccionado && (
-        <section className="relative py-20 md:py-32 flex flex-col items-center justify-center text-center px-6 border-b border-zinc-200/60 overflow-hidden">
+        <section className="relative py-12 sm:py-20 md:py-28 flex flex-col items-center justify-center text-center px-4 border-b border-zinc-200/60 overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img 
               src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=1920" 
@@ -435,15 +435,15 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/30"></div>
           </div>
 
-          <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
-            <span className="text-[10px] md:text-xs font-semibold tracking-[0.3em] text-stone-200 uppercase mb-4 md:mb-6 border border-stone-300/40 px-4 py-1.5 rounded-full bg-black/40 backdrop-blur-md">
+          <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
+            <span className="text-[9px] sm:text-[10px] font-semibold tracking-[0.25em] text-stone-200 uppercase mb-3 sm:mb-4 border border-stone-300/40 px-3.5 py-1 rounded-full bg-black/40 backdrop-blur-md">
               Colección Exclusiva • Envío Gratis
             </span>
-            <h1 className={`${fontElegante.className} text-5xl sm:text-7xl md:text-9xl font-extrabold tracking-[0.2em] mb-4 md:mb-6 text-white uppercase drop-shadow-2xl`}>
+            <h1 className={`${fontElegante.className} text-4xl sm:text-6xl md:text-8xl font-extrabold tracking-[0.15em] mb-3 sm:mb-4 text-white uppercase drop-shadow-2xl`}>
               ETERNUM
             </h1>
-            <p className="text-zinc-200 text-xs sm:text-sm md:text-lg max-w-xl font-light leading-relaxed mb-8 md:mb-10 tracking-wide drop-shadow px-4">
-              Conjuntos exclusivos de camiseta y pantaloneta en tonos seleccionados y 3 isotipos de autor. 
+            <p className="text-zinc-200 text-xs sm:text-sm md:text-base max-w-md font-light leading-relaxed mb-6 sm:mb-8 tracking-wide drop-shadow px-2">
+              Conjuntos exclusivos de camiseta y pantaloneta con isotipos de autor. 
               $100.000 COP con envío nacional gratis.
             </p>
             <button 
@@ -451,7 +451,7 @@ export default function Home() {
                 const catalogoElem = document.getElementById("catalogo");
                 if (catalogoElem) catalogoElem.scrollIntoView({ behavior: "smooth" });
               }}
-              className="px-8 py-3.5 bg-stone-100 hover:bg-white text-zinc-950 font-bold rounded-full transition text-[11px] uppercase tracking-widest shadow-2xl"
+              className="px-7 py-3 bg-stone-100 hover:bg-white text-zinc-950 font-bold rounded-full transition text-[10px] sm:text-xs uppercase tracking-widest shadow-2xl"
             >
               Explorar Catálogo
             </button>
@@ -460,7 +460,7 @@ export default function Home() {
       )}
 
       {productoSeleccionado ? (
-        <main className="max-w-7xl mx-auto px-6 md:px-12 py-10">
+        <main className="max-w-7xl mx-auto px-4 sm:px-8 py-8">
           <button
             onClick={() => setProductoSeleccionado(null)}
             className="text-xs text-zinc-500 hover:text-zinc-950 mb-6 flex items-center gap-2 transition"
@@ -470,13 +470,13 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
             <div className="space-y-4">
-              <div className="h-[380px] sm:h-[480px] md:h-[550px] rounded-2xl bg-stone-200 shadow-2xl relative overflow-hidden border border-zinc-200">
+              <div className="h-[350px] sm:h-[450px] md:h-[520px] rounded-2xl bg-stone-200 shadow-xl relative overflow-hidden border border-zinc-200">
                 <img
                   src={productoSeleccionado.colores[0].imagenUrl}
                   alt={productoSeleccionado.nombre}
                   className="w-full h-full object-cover object-center"
                 />
-                <span className="absolute bottom-4 left-4 text-xs bg-black/60 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 text-white">
+                <span className="absolute bottom-4 left-4 text-xs bg-black/60 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20 text-white">
                   Incluye Camiseta + Pantaloneta
                 </span>
               </div>
@@ -484,15 +484,15 @@ export default function Home() {
 
             <div className="flex flex-col justify-between">
               <div>
-                <span className="text-xs font-semibold text-stone-700 uppercase tracking-widest">{productoSeleccionado.categoria}</span>
-                <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-zinc-950 mt-1 mb-2">{productoSeleccionado.nombre}</h1>
-                <p className="text-xl md:text-2xl font-extrabold text-zinc-900 mb-2">${productoSeleccionado.precio.toLocaleString("es-CO")} COP</p>
-                <span className="inline-block text-xs font-bold bg-stone-200 text-stone-800 px-3 py-1 rounded-md mb-4">🚚 Envío Gratis a Todo Colombia</span>
+                <span className="text-[11px] font-semibold text-stone-700 uppercase tracking-widest">{productoSeleccionado.categoria}</span>
+                <h1 className="text-2xl sm:text-3xl font-black text-zinc-950 mt-1 mb-2">{productoSeleccionado.nombre}</h1>
+                <p className="text-xl font-extrabold text-zinc-900 mb-2">${productoSeleccionado.precio.toLocaleString("es-CO")} COP</p>
+                <span className="inline-block text-[11px] font-bold bg-stone-200 text-stone-800 px-3 py-1 rounded-md mb-4">🚚 Envío Gratis a Todo Colombia</span>
                 <p className="text-zinc-600 text-xs sm:text-sm leading-relaxed mb-6">{productoSeleccionado.descripcion}</p>
 
                 <div className="mb-6">
                   <span className="text-xs font-bold text-zinc-700 uppercase tracking-wider block mb-2">1. Elige el Logo del Conjunto:</span>
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="grid grid-cols-3 gap-2 sm:gap-3">
                     {(["A&M", "UX", "A"] as const).map((logo) => (
                       <button
                         key={logo}
@@ -501,14 +501,14 @@ export default function Home() {
                           setTallaElegida("");
                           setCantidadElegida(1);
                         }}
-                        className={`p-3 rounded-xl border transition flex flex-col items-center justify-center gap-2 ${
+                        className={`p-2.5 sm:p-3 rounded-xl border transition flex flex-col items-center justify-center gap-1.5 ${
                           logoElegido === logo
                             ? "border-zinc-950 bg-zinc-950 text-white shadow-md"
                             : "border-zinc-200 bg-white text-zinc-800 hover:border-zinc-300"
                         }`}
                       >
-                        <LogoGrafico tipo={logo} className="w-8 h-8" />
-                        <span className="text-[10px] font-bold tracking-widest uppercase">Diseño {logo}</span>
+                        <LogoGrafico tipo={logo} className="w-7 h-7 sm:w-8 sm:h-8" />
+                        <span className="text-[9px] sm:text-[10px] font-bold tracking-widest uppercase">Diseño {logo}</span>
                       </button>
                     ))}
                   </div>
@@ -537,7 +537,7 @@ export default function Home() {
                             setTallaElegida(tallaStr);
                             setCantidadElegida(1);
                           }}
-                          className={`py-3 rounded-xl text-xs font-bold border transition flex flex-col items-center gap-1 ${
+                          className={`py-2.5 sm:py-3 rounded-xl text-xs font-bold border transition flex flex-col items-center gap-1 ${
                             !hayStock
                               ? "border-zinc-200 bg-stone-100 text-zinc-400 line-through cursor-not-allowed opacity-60"
                               : tallaElegida === tallaStr
@@ -567,7 +567,7 @@ export default function Home() {
 
               <button
                 onClick={agregarAlCarrito}
-                className="w-full bg-zinc-950 hover:bg-zinc-800 text-white font-bold py-4 rounded-xl transition shadow-xl text-xs uppercase tracking-widest mt-4"
+                className="w-full bg-zinc-950 hover:bg-zinc-800 text-white font-bold py-3.5 rounded-xl transition shadow-lg text-xs uppercase tracking-widest mt-2"
               >
                 Añadir al Carrito
               </button>
@@ -575,17 +575,17 @@ export default function Home() {
           </div>
         </main>
       ) : (
-        <main id="catalogo" className="px-6 md:px-12 py-16 max-w-7xl mx-auto">
-          <div className="mb-10 border-b border-zinc-200 pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <main id="catalogo" className="px-4 sm:px-8 py-12 sm:py-16 max-w-7xl mx-auto">
+          <div className="mb-8 sm:mb-10 border-b border-zinc-200 pb-5 flex flex-col md:flex-row md:items-end justify-between gap-3">
             <div>
-              <span className="text-xs font-semibold text-stone-700 uppercase tracking-widest">Catálogo Físico Disponible</span>
-              <h2 className="text-2xl md:text-3xl font-bold tracking-tight mt-1 text-zinc-950">
+              <span className="text-[11px] font-semibold text-stone-700 uppercase tracking-widest">Catálogo Físico Disponible</span>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mt-1 text-zinc-950">
                 Elige tu Color ($100.000 • Envío Gratis)
               </h2>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
             {PRODUCTOS.map((producto) => {
               const totalUnidadesColor = producto.colores[0].inventario.reduce((sum, item) => sum + item.stock, 0);
               return (
@@ -597,32 +597,32 @@ export default function Home() {
                     setLogoElegido("A&M");
                     setCantidadElegida(1);
                   }}
-                  className="group border border-zinc-200/80 rounded-2xl p-5 bg-white hover:border-stone-400 hover:shadow-xl transition duration-300 cursor-pointer"
+                  className="group border border-zinc-200/80 rounded-2xl p-4 sm:p-5 bg-white hover:border-stone-400 hover:shadow-xl transition duration-300 cursor-pointer"
                 >
-                  <div className="h-64 sm:h-72 rounded-xl mb-5 bg-stone-100 group-hover:scale-[1.02] transition duration-300 relative overflow-hidden shadow-sm">
+                  <div className="h-60 sm:h-68 rounded-xl mb-4 bg-stone-100 group-hover:scale-[1.02] transition duration-300 relative overflow-hidden shadow-sm">
                     <img
                       src={producto.colores[0].imagenUrl}
                       alt={producto.nombre}
                       className="w-full h-full object-cover object-center"
                     />
-                    <span className="absolute top-3 right-3 text-[10px] bg-black/60 text-white px-3 py-1 rounded-full backdrop-blur-sm">
+                    <span className="absolute top-3 right-3 text-[10px] bg-black/60 text-white px-2.5 py-1 rounded-full backdrop-blur-sm">
                       {totalUnidadesColor} unid. stock
                     </span>
-                    <span className="absolute bottom-3 left-3 text-[10px] bg-black/50 text-white px-3 py-1 rounded-full backdrop-blur-sm">
+                    <span className="absolute bottom-3 left-3 text-[10px] bg-black/50 text-white px-2.5 py-1 rounded-full backdrop-blur-sm">
                       Pantaloneta + Camiseta
                     </span>
                   </div>
 
-                  <span className="text-xs text-stone-700 font-semibold uppercase tracking-wider">{producto.categoria}</span>
-                  <h3 className="text-lg md:text-xl font-bold mt-1 mb-2 text-zinc-950">{producto.nombre}</h3>
+                  <span className="text-[11px] text-stone-700 font-semibold uppercase tracking-wider">{producto.categoria}</span>
+                  <h3 className="text-lg font-bold mt-1 mb-1.5 text-zinc-950">{producto.nombre}</h3>
                   <p className="text-zinc-500 text-xs sm:text-sm line-clamp-2 mb-4">{producto.descripcion}</p>
                   
                   <div className="flex justify-between items-center pt-3 border-t border-zinc-100">
                     <div>
-                      <span className="text-base md:text-lg font-extrabold text-zinc-950">${producto.precio.toLocaleString("es-CO")}</span>
+                      <span className="text-base font-extrabold text-zinc-950">${producto.precio.toLocaleString("es-CO")}</span>
                       <span className="block text-[10px] text-emerald-600 font-bold">Envío Gratis</span>
                     </div>
-                    <span className="text-xs bg-zinc-950 text-white font-bold px-3.5 py-2 rounded-full group-hover:bg-stone-800 transition">
+                    <span className="text-xs bg-zinc-950 text-white font-bold px-3 py-2 rounded-full group-hover:bg-stone-800 transition">
                       Ver Tallas
                     </span>
                   </div>
@@ -745,7 +745,7 @@ export default function Home() {
         </div>
       )}
 
-      <footer className="px-6 md:px-12 py-8 border-t border-zinc-200 text-zinc-500 text-xs flex flex-col md:flex-row justify-between items-center gap-4">
+      <footer className="px-4 sm:px-8 py-8 border-t border-zinc-200 text-zinc-500 text-xs flex flex-col md:flex-row justify-between items-center gap-4">
         <div>© 2026 ETERNUM. Todos los derechos reservados.</div>
         <div className="flex gap-4">
           <a href="#" className="hover:text-zinc-950">Términos</a>
