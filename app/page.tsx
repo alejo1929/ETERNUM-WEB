@@ -42,7 +42,7 @@ interface DatosEnvio {
   notas: string;
 }
 
-// INVENTARIO ACTUALIZADO CON FOTOS REALES DISPONIBLES ($100.000 COP - ENVÍO GRATIS)
+// INVENTARIO ACTUALIZADO CON SOPORTE DINÁMICO DE LOGOS Y FOTOS
 const PRODUCTOS: Producto[] = [
   {
     id: 1,
@@ -244,7 +244,6 @@ const PRODUCTOS: Producto[] = [
   }
 ];
 
-// COMPONENTES VECTORIALES FIELES A TUS 3 LOGOS REALES
 const LogoGrafico = ({ tipo, className = "w-8 h-8" }: { tipo: "A&M" | "UX" | "A"; className?: string }) => {
   if (tipo === "A&M") {
     return (
@@ -318,15 +317,6 @@ export default function Home() {
 
     if (!variante || variante.stock <= 0) {
       alert("Lo sentimos, esta combinación exacta (Color, Talla y Logo) está agotada.");
-      return;
-    }
-
-    const enCarritoActual = carrito.find(
-      item => item.producto.id === productoSeleccionado.id && item.talla === tallaElegida && item.logo === logoElegido
-    )?.cantidad || 0;
-
-    if (enCarritoActual + cantidadElegida > variante.stock) {
-      alert(`Solo tenemos ${variante.stock} unidad(es) disponible(s) de esta combinación.`);
       return;
     }
 
@@ -417,7 +407,7 @@ export default function Home() {
               <div className="space-y-6">
                 <span className="text-xs font-semibold uppercase tracking-widest text-zinc-400 block">Canal de Atención</span>
                 <p className="text-sm text-zinc-600 leading-relaxed">
-                  ¿Tienes dudas sobre alguna talla, quejas, soporte postventa o deseas asesoría directa? Escríbenos a nuestro WhatsApp oficial.
+                  ¿Tienes dudas sobre alguna talla, soporte postventa o deseas asesoría directa? Escríbenos a nuestro WhatsApp oficial.
                 </p>
                 <a
                   href={`https://wa.me/${NUMERO_WHATSAPP_SOPORTE}?text=${encodeURIComponent("Hola ETERNUM, necesito ayuda / tengo una consulta.")}`}
@@ -428,10 +418,6 @@ export default function Home() {
                   <span>💬</span> Contactar Soporte WhatsApp
                 </a>
               </div>
-            </div>
-
-            <div className="border-t border-zinc-200 pt-6">
-              <p className="text-xs text-zinc-500">eternumcouture.com — High-End Streetwear</p>
             </div>
           </div>
           <div className="flex-1" onClick={() => setMenuNavegacionAbierto(false)}></div>
@@ -457,7 +443,7 @@ export default function Home() {
               ETERNUM
             </h1>
             <p className="text-zinc-200 text-sm md:text-lg max-w-xl font-light leading-relaxed mb-10 tracking-wide drop-shadow">
-              Conjuntos exclusivos de camiseta y pantaloneta en tonos seleccionados y 3 isotipos de autor. 
+              Conjuntos exclusivos de camiseta y pantaloneta con personalización de isotipo de autor. 
               $100.000 COP con envío nacional gratis.
             </p>
             <button 
@@ -488,10 +474,10 @@ export default function Home() {
                 <img
                   src={productoSeleccionado.colores[0].imagenUrl}
                   alt={productoSeleccionado.nombre}
-                  className="w-full h-full object-cover object-center"
+                  className="w-full h-full object-cover object-center transition-all duration-300"
                 />
                 <span className="absolute bottom-4 left-4 text-xs bg-black/60 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 text-white">
-                  Incluye Camiseta + Pantaloneta
+                  Mostrando diseño con isotipo: <strong>{logoElegido}</strong>
                 </span>
               </div>
             </div>
@@ -620,7 +606,7 @@ export default function Home() {
                       className="w-full h-full object-cover object-center"
                     />
                     <span className="absolute top-3 right-3 text-[10px] bg-black/60 text-white px-3 py-1 rounded-full backdrop-blur-sm">
-                      {totalUnidadesColor} unid. en stock
+                      {totalUnidadesColor} unid. stock
                     </span>
                     <span className="absolute bottom-3 left-3 text-[10px] bg-black/50 text-white px-3 py-1 rounded-full backdrop-blur-sm">
                       Pantaloneta + Camiseta
