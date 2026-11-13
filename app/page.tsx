@@ -39,6 +39,7 @@ interface DatosEnvio {
   barrio: string;
   ciudad: string;
   departamento: string;
+  metodoPago: string;
   notas: string;
 }
 
@@ -288,8 +289,8 @@ export default function Home() {
   const [carritoAbierto, setCarritoAbierto] = useState<boolean>(false);
   const [menuNavegacionAbierto, setMenuNavegacionAbierto] = useState<boolean>(false);
   const [pedidoConfirmado, setPedidoConfirmado] = useState<boolean>(false);
+  const [cargandoEnvio, setCargandoEnvio] = useState<boolean>(false);
 
-  // NÚMERO OFICIAL DE WHATSAPP ETERNUM COUTURE
   const NUMERO_WHATSAPP_TIENDA = "573144386824";
 
   const [datosEnvio, setDatosEnvio] = useState<DatosEnvio>({
@@ -300,6 +301,7 @@ export default function Home() {
     barrio: "",
     ciudad: "",
     departamento: "",
+    metodoPago: "PSE (Débito Bancario)",
     notas: ""
   });
 
@@ -345,13 +347,55 @@ export default function Home() {
   const totalCarrito = carrito.reduce((acc, item) => acc + item.producto.precio * item.cantidad, 0);
   const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
 
-  const handleChangeEnvio = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChangeEnvio = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setDatosEnvio({ ...datosEnvio, [e.target.name]: e.target.value });
   };
 
-  const procesarPedidoWeb = (e: React.FormEvent) => {
+  const procesarPedidoWeb = async (e: React.FormEvent) => {
     e.preventDefault();
     if (carrito.length === 0) return;
+
+    setCargandoEnvio(true);
+
+    const detalleProductos = carrito.map(item => 
+      `• ${item.producto.nombre} | Talla: ${item.talla} | Logo: ${item.logo} | Cant: ${item.cantidad} | Subtotal: $${(item.producto.precio * item.cantidad).toLocaleString("es-CO")} COP`
+    ).join("\n");
+
+    const mensajeEmail = `
+ NUEVA ORDEN RECIBIDA - ETERNUM COUTURE
+----------------------------------------
+CLIENTE:
+- Nombre: ${datosEnvio.nombre}
+- Cédula: ${datosEnvio.cedula}
+- Teléfono: ${datosEnvio.telefono}
+- Dirección: ${datosEnvio.direccion}, ${datosEnvio.barrio}
+- Ciudad: ${datosEnvio.ciudad} (${datosEnvio.departamento})
+- Método de Pago: ${datosEnvio.metodoPago}
+- Notas: ${datosEnvio.notas || "Ninguna"}
+
+PRODUCTOS:
+${detalleProductos}
+
+TOTAL A PAGAR: $${totalCarrito.toLocaleString("es-CO")} COP (Envío Gratis)
+    `.trim();
+
+    try {
+      await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: "31e4f0c3-8756-4b58-8cea-d65857b21511", 
+          subject: `⚡ Nueva Orden Web de ${datosEnvio.nombre} - $${totalCarrito.toLocaleString("es-CO")} COP`,
+          from_name: "Eternum Couture Web",
+          message: mensajeEmail,
+          email_cliente: datosEnvio.telefono
+        })
+      });
+    } catch (err) {
+      console.error("Error al enviar email automático", err);
+    }
+
+    setCargandoEnvio(false);
     setPedidoConfirmado(true);
     setCarrito([]);
   };
@@ -407,7 +451,7 @@ export default function Home() {
               <div className="space-y-4">
                 <span className="text-[10px] font-semibold uppercase tracking-widest text-zinc-400 block">Atención al Cliente</span>
                 <p className="text-xs text-zinc-600 leading-relaxed">
-                  ¿Necesitas asesoría personalizada sobre tallas, disponibilidad o envíos? Escríbenos directamente a nuestro WhatsApp oficial.
+                  ¿Necesitas asesoría personalizada sobre tallas, disponibilidad o pagos en línea? Escríbenos directamente.
                 </p>
                 <a
                   href={`https://wa.me/${NUMERO_WHATSAPP_TIENDA}?text=${encodeURIComponent("Hola ETERNUM COUTURE, quiero recibir asesoría personalizada.")}`}
@@ -634,7 +678,7 @@ export default function Home() {
                       <span className="text-base font-extrabold text-zinc-950">${producto.precio.toLocaleString("es-CO")}</span>
                       <span className="block text-[10px] text-emerald-600 font-bold">Envío Gratis</span>
                     </div>
-                    <span className="text-xs bg-zinc-950 text-white font-bold px-3 py-2 rounded-full group-hover:bg-stone-800 transition">
+                    <span className="text-xs bg-zinc-950 text-white font-bold px-3 py-2 rounded-full group-hover:bg-zinc-800 transition">
                       Ver Tallas
                     </span>
                   </div>
@@ -686,10 +730,10 @@ export default function Home() {
 
               {pedidoConfirmado ? (
                 <div className="bg-white border border-stone-300 rounded-2xl p-6 text-center space-y-4 my-8 shadow-sm">
-                  <div className="w-12 h-12 rounded-full bg-zinc-950 text-white flex items-center justify-center mx-auto text-xl">✓</div>
-                  <h4 className="text-lg font-bold text-zinc-950">¡Orden Web Registrada!</h4>
+                  <div className="w-12 h-12 rounded-full bg-emerald-600 text-white flex items-center justify-center mx-auto text-xl">✓</div>
+                  <h4 className="text-lg font-bold text-zinc-950">¡Orden Registrada con Éxito!</h4>
                   <p className="text-xs text-zinc-600 leading-relaxed">
-                    Hemos recibido los datos de tu envío para <strong>{datosEnvio.nombre}</strong> en <strong>{datosEnvio.ciudad}</strong>.
+                    Hemos enviado los detalles completos de tu pago y envío directamente al correo de la tienda. Nos pondremos en contacto contigo de inmediato para coordinar el despacho gratuito.
                   </p>
                   <button
                     onClick={() => setCarritoAbierto(false)}
@@ -702,7 +746,7 @@ export default function Home() {
                 <p className="text-zinc-400 text-center py-12 text-sm">Tu carrito está completamente vacío.</p>
               ) : (
                 <>
-                  <div className="space-y-3 mb-6 max-h-[26vh] overflow-y-auto pr-1">
+                  <div className="space-y-3 mb-6 max-h-[22vh] overflow-y-auto pr-1">
                     {carrito.map((item, index) => (
                       <div key={index} className="flex justify-between items-center bg-white p-3 rounded-xl border border-zinc-200 text-xs shadow-sm">
                         <div>
@@ -722,7 +766,7 @@ export default function Home() {
                       <input type="text" name="cedula" placeholder="Cédula / NIT *" required value={datosEnvio.cedula} onChange={handleChangeEnvio} className="bg-white border border-zinc-200 rounded-lg px-3 py-2 text-xs text-zinc-950 focus:outline-none focus:border-stone-800" />
                     </div>
                     <div className="grid grid-cols-2 gap-2">
-                      <input type="tel" name="telefono" placeholder="Teléfono *" required value={datosEnvio.telefono} onChange={handleChangeEnvio} className="bg-white border border-zinc-200 rounded-lg px-3 py-2 text-xs text-zinc-950 focus:outline-none focus:border-stone-800" />
+                      <input type="tel" name="telefono" placeholder="Teléfono / WhatsApp *" required value={datosEnvio.telefono} onChange={handleChangeEnvio} className="bg-white border border-zinc-200 rounded-lg px-3 py-2 text-xs text-zinc-950 focus:outline-none focus:border-stone-800" />
                       <input type="text" name="ciudad" placeholder="Ciudad / Municipio *" required value={datosEnvio.ciudad} onChange={handleChangeEnvio} className="bg-white border border-zinc-200 rounded-lg px-3 py-2 text-xs text-zinc-950 focus:outline-none focus:border-stone-800" />
                     </div>
                     <div className="grid grid-cols-2 gap-2">
@@ -730,7 +774,17 @@ export default function Home() {
                       <input type="text" name="barrio" placeholder="Barrio *" required value={datosEnvio.barrio} onChange={handleChangeEnvio} className="bg-white border border-zinc-200 rounded-lg px-3 py-2 text-xs text-zinc-950 focus:outline-none focus:border-stone-800" />
                     </div>
                     <input type="text" name="direccion" placeholder="Dirección exacta de entrega *" required value={datosEnvio.direccion} onChange={handleChangeEnvio} className="w-full bg-white border border-zinc-200 rounded-lg px-3 py-2 text-xs text-zinc-950 focus:outline-none focus:border-stone-800" />
-                    <textarea name="notas" placeholder="Indicaciones adicionales" rows={2} value={datosEnvio.notas} onChange={handleChangeEnvio} className="w-full bg-white border border-zinc-200 rounded-lg px-3 py-2 text-xs text-zinc-950 focus:outline-none focus:border-stone-800"></textarea>
+                    
+                    <div className="pt-2">
+                      <label className="text-xs font-bold text-stone-700 uppercase tracking-wider block mb-1">Método de Pago Seleccionado:</label>
+                      <select name="metodoPago" value={datosEnvio.metodoPago} onChange={handleChangeEnvio} className="w-full bg-white border border-zinc-200 rounded-lg px-3 py-2 text-xs text-zinc-950 focus:outline-none focus:border-stone-800 font-semibold">
+                        <option value="PSE (Débito Bancario)">🏦 PSE (Débito a Cuentas Corriente / Ahorros)</option>
+                        <option value="Tarjeta de Crédito / Débito">💳 Tarjeta de Crédito / Débito</option>
+                        <option value="Nequi / Bancolombia">📱 Transferencia Nequi / Bancolombia</option>
+                      </select>
+                    </div>
+
+                    <textarea name="notas" placeholder="Indicaciones adicionales (opcional)" rows={2} value={datosEnvio.notas} onChange={handleChangeEnvio} className="w-full bg-white border border-zinc-200 rounded-lg px-3 py-2 text-xs text-zinc-950 focus:outline-none focus:border-stone-800"></textarea>
                   </form>
                 </>
               )}
@@ -742,14 +796,14 @@ export default function Home() {
                   <span>Total a Pagar:</span>
                   <span className="text-stone-700">${totalCarrito.toLocaleString("es-CO")} COP</span>
                 </div>
-                <p className="text-[11px] text-emerald-600 font-bold mb-4">✓ Envío gratis incluido</p>
+                <p className="text-[11px] text-emerald-600 font-bold mb-4">✓ Envío gratis a todo el país incluido</p>
                 <button
                   type="submit"
                   form="form-envio"
-                  disabled={carrito.length === 0}
+                  disabled={carrito.length === 0 || cargandoEnvio}
                   className="w-full bg-zinc-950 hover:bg-zinc-800 text-white font-bold py-3.5 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition flex items-center justify-center gap-2 shadow-md text-xs uppercase tracking-widest"
                 >
-                  <span>Confirmar Compra Web</span>
+                  <span>{cargandoEnvio ? "Procesando Orden..." : "Confirmar y Pagar (PSE / Tarjeta)"}</span>
                 </button>
               </div>
             )}
