@@ -42,12 +42,11 @@ interface DatosEnvio {
   notas: string;
 }
 
-// INVENTARIO ACTUALIZADO CON FOTOS REALES
 const PRODUCTOS: Producto[] = [
   {
     id: 1,
     nombre: "Conjunto Negro Ónix",
-    categoria: "Edición Limitada",
+    categoria: "Colección Exclusiva",
     precio: 100000,
     descripcion: "Conjunto exclusivo de pantaloneta más camiseta en tejido texturizado premium.",
     detalles: ["Camiseta oversize + Pantaloneta a juego", "Confección 100% Colombiana", "Envío Gratis incluido"],
@@ -72,7 +71,7 @@ const PRODUCTOS: Producto[] = [
   {
     id: 2,
     nombre: "Conjunto Rosado Minimal",
-    categoria: "Edición Limitada",
+    categoria: "Colección Exclusiva",
     precio: 100000,
     descripcion: "Conjunto exclusivo de pantaloneta más camiseta en tono rosado de alta elegancia.",
     detalles: ["Camiseta oversize + Pantaloneta a juego", "Confección 100% Colombiana", "Envío Gratis incluido"],
@@ -96,7 +95,7 @@ const PRODUCTOS: Producto[] = [
   {
     id: 3,
     nombre: "Conjunto Café Tostado",
-    categoria: "Edición Limitada",
+    categoria: "Colección Exclusiva",
     precio: 100000,
     descripcion: "Conjunto exclusivo de pantaloneta más camiseta en sofisticado tono café.",
     detalles: ["Camiseta oversize + Pantaloneta a juego", "Confección 100% Colombiana", "Envío Gratis incluido"],
@@ -119,7 +118,7 @@ const PRODUCTOS: Producto[] = [
   {
     id: 4,
     nombre: "Conjunto Caqui Urbano",
-    categoria: "Edición Limitada",
+    categoria: "Colección Exclusiva",
     precio: 100000,
     descripcion: "Conjunto exclusivo de pantaloneta más camiseta en color caqui neutro.",
     detalles: ["Camiseta oversize + Pantaloneta a juego", "Confección 100% Colombiana", "Envío Gratis incluido"],
@@ -140,7 +139,7 @@ const PRODUCTOS: Producto[] = [
   {
     id: 5,
     nombre: "Conjunto Agua Marina",
-    categoria: "Edición Limitada",
+    categoria: "Colección Exclusiva",
     precio: 100000,
     descripcion: "Conjunto exclusivo de pantaloneta más camiseta en fresco tono agua marina.",
     detalles: ["Camiseta oversize + Pantaloneta a juego", "Confección 100% Colombiana", "Envío Gratis incluido"],
@@ -160,7 +159,7 @@ const PRODUCTOS: Producto[] = [
   {
     id: 6,
     nombre: "Conjunto Azul Clásico",
-    categoria: "Edición Limitada",
+    categoria: "Colección Exclusiva",
     precio: 100000,
     descripcion: "Conjunto exclusivo de pantaloneta más camiseta en tono azul versátil.",
     detalles: ["Camiseta oversize + Pantaloneta a juego", "Confección 100% Colombiana", "Envío Gratis incluido"],
@@ -183,7 +182,7 @@ const PRODUCTOS: Producto[] = [
   {
     id: 7,
     nombre: "Conjunto Azul Claro",
-    categoria: "Edición Limitada",
+    categoria: "Colección Exclusiva",
     precio: 100000,
     descripcion: "Conjunto exclusivo de pantaloneta más camiseta en tono celeste limpio.",
     detalles: ["Camiseta oversize + Pantaloneta a juego", "Confección 100% Colombiana", "Envío Gratis incluido"],
@@ -205,7 +204,7 @@ const PRODUCTOS: Producto[] = [
   {
     id: 8,
     nombre: "Conjunto Azul Oscuro",
-    categoria: "Edición Limitada",
+    categoria: "Colección Exclusiva",
     precio: 100000,
     descripcion: "Conjunto exclusivo de pantaloneta más camiseta en profundo azul marino.",
     detalles: ["Camiseta oversize + Pantaloneta a juego", "Confección 100% Colombiana", "Envío Gratis incluido"],
@@ -225,7 +224,7 @@ const PRODUCTOS: Producto[] = [
   {
     id: 10,
     nombre: "Conjunto Rojo Carmesí",
-    categoria: "Edición Limitada",
+    categoria: "Colección Exclusiva",
     precio: 100000,
     descripcion: "Conjunto exclusivo de pantaloneta más camiseta en llamativo tono rojo.",
     detalles: ["Camiseta oversize + Pantaloneta a juego", "Confección 100% Colombiana", "Envío Gratis incluido"],
@@ -290,7 +289,8 @@ export default function Home() {
   const [menuNavegacionAbierto, setMenuNavegacionAbierto] = useState<boolean>(false);
   const [pedidoConfirmado, setPedidoConfirmado] = useState<boolean>(false);
 
-  const NUMERO_WHATSAPP_SOPORTE = "573000000000";
+  // NÚMERO OFICIAL DE WHATSAPP ETERNUM COUTURE
+  const NUMERO_WHATSAPP_TIENDA = "573144386824";
 
   const [datosEnvio, setDatosEnvio] = useState<DatosEnvio>({
     nombre: "",
@@ -365,7 +365,7 @@ export default function Home() {
             className="p-2 rounded-lg bg-stone-100 border border-zinc-200 hover:bg-stone-200 transition flex items-center gap-2"
           >
             <span className="text-lg leading-none text-zinc-900">☰</span>
-            <span className="text-[11px] uppercase tracking-widest text-zinc-600 hidden sm:inline">Soporte</span>
+            <span className="text-[11px] uppercase tracking-widest text-zinc-600 hidden sm:inline">Asesoría</span>
           </button>
         </div>
 
@@ -405,17 +405,17 @@ export default function Home() {
               </div>
 
               <div className="space-y-4">
-                <span className="text-[10px] font-semibold uppercase tracking-widest text-zinc-400 block">Canal de Atención</span>
+                <span className="text-[10px] font-semibold uppercase tracking-widest text-zinc-400 block">Atención al Cliente</span>
                 <p className="text-xs text-zinc-600 leading-relaxed">
-                  ¿Tienes dudas sobre tallas, soporte postventa o deseas asesoría? Escríbenos al WhatsApp oficial.
+                  ¿Necesitas asesoría personalizada sobre tallas, disponibilidad o envíos? Escríbenos directamente a nuestro WhatsApp oficial.
                 </p>
                 <a
-                  href={`https://wa.me/${NUMERO_WHATSAPP_SOPORTE}?text=${encodeURIComponent("Hola ETERNUM, necesito ayuda / tengo una consulta.")}`}
+                  href={`https://wa.me/${NUMERO_WHATSAPP_TIENDA}?text=${encodeURIComponent("Hola ETERNUM COUTURE, quiero recibir asesoría personalizada.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full bg-zinc-950 hover:bg-zinc-800 text-white font-bold py-3 rounded-xl transition flex items-center justify-center gap-2 text-[11px] uppercase tracking-widest shadow-md"
+                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl transition flex items-center justify-center gap-2 text-[11px] uppercase tracking-widest shadow-md"
                 >
-                  <span>💬</span> WhatsApp Soporte
+                  <span>💬</span> Asesoría por WhatsApp
                 </a>
               </div>
             </div>
@@ -565,12 +565,24 @@ export default function Home() {
                 </div>
               </div>
 
-              <button
-                onClick={agregarAlCarrito}
-                className="w-full bg-zinc-950 hover:bg-zinc-800 text-white font-bold py-3.5 rounded-xl transition shadow-lg text-xs uppercase tracking-widest mt-2"
-              >
-                Añadir al Carrito
-              </button>
+              <div className="space-y-2.5 mt-2">
+                <button
+                  onClick={agregarAlCarrito}
+                  className="w-full bg-zinc-950 hover:bg-zinc-800 text-white font-bold py-3.5 rounded-xl transition shadow-lg text-xs uppercase tracking-widest"
+                >
+                  Añadir al Carrito
+                </button>
+                <a
+                  href={`https://wa.me/${NUMERO_WHATSAPP_TIENDA}?text=${encodeURIComponent(
+                    `Hola ETERNUM COUTURE, quiero asesoría personalizada sobre el *${productoSeleccionado.nombre}* (Logo ${logoElegido}${tallaElegida ? `, Talla ${tallaElegida}` : ""}).`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition shadow-sm text-xs uppercase tracking-widest flex items-center justify-center gap-2"
+                >
+                  <span>💬</span> Asesoría Personalizada por WhatsApp
+                </a>
+              </div>
             </div>
           </div>
         </main>
@@ -677,7 +689,7 @@ export default function Home() {
                   <div className="w-12 h-12 rounded-full bg-zinc-950 text-white flex items-center justify-center mx-auto text-xl">✓</div>
                   <h4 className="text-lg font-bold text-zinc-950">¡Orden Web Registrada!</h4>
                   <p className="text-xs text-zinc-600 leading-relaxed">
-                    Hemos recibido los datos de tu envío para <strong>{datosEnvio.nombre}</strong> en <strong>{datosEnvio.ciudad}</strong>. Te contactaremos pronto para coordinar el despacho gratuito.
+                    Hemos recibido los datos de tu envío para <strong>{datosEnvio.nombre}</strong> en <strong>{datosEnvio.ciudad}</strong>.
                   </p>
                   <button
                     onClick={() => setCarritoAbierto(false)}
@@ -748,6 +760,7 @@ export default function Home() {
       <footer className="px-4 sm:px-8 py-8 border-t border-zinc-200 text-zinc-500 text-xs flex flex-col md:flex-row justify-between items-center gap-4">
         <div>© 2026 ETERNUM. Todos los derechos reservados.</div>
         <div className="flex gap-4">
+          <a href={`https://wa.me/${NUMERO_WHATSAPP_TIENDA}`} target="_blank" rel="noopener noreferrer" className="hover:text-zinc-950">WhatsApp</a>
           <a href="#" className="hover:text-zinc-950">Términos</a>
           <a href="#" className="hover:text-zinc-950">Privacidad</a>
         </div>
