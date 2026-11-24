@@ -69,7 +69,7 @@ const PRODUCTS: Product[] = [
     id: "set-aym-cafe",
     name: "Set ETERNUM Café",
     category: "Conjuntos",
-    priceCop: 115000,
+    priceCop: 100000,
     image: "/cafe.jpg",
     description:
       "Combinación en tono café con tela suave de alta densidad y ajuste cómodo.",
@@ -79,7 +79,7 @@ const PRODUCTS: Product[] = [
     id: "set-aym-caqui",
     name: "Set ETERNUM Caqui",
     category: "Conjuntos",
-    priceCop: 115000,
+    priceCop: 100000,
     image: "/caqui.jpg",
     description:
       "Diseño versátil en tono caqui con corte moderno y confección cuidada.",
@@ -89,7 +89,7 @@ const PRODUCTS: Product[] = [
     id: "set-aym-negro-onix",
     name: "Set ETERNUM Negro Ónix",
     category: "Conjuntos",
-    priceCop: 120000,
+    priceCop: 100000,
     image: "/negro-onix.jpg",
     description:
       "Edición oscura de presencia sobria y elegante para uso diario o salidas nocturnas.",
@@ -99,7 +99,7 @@ const PRODUCTS: Product[] = [
     id: "camiseta-aym-rojo",
     name: "Camiseta ETERNUM Rojo",
     category: "Camisetas",
-    priceCop: 65000,
+    priceCop: 100000,
     image: "/rojo.jpg",
     description:
       "Camiseta unisex de algodón con caída limpia y detalle discreto.",
@@ -109,7 +109,7 @@ const PRODUCTS: Product[] = [
     id: "short-aym-rosado",
     name: "Pantaloneta ETERNUM Rosado",
     category: "Shorts",
-    priceCop: 60000,
+    priceCop: 100000,
     image: "/rosado.jpg",
     description:
       "Pantaloneta ligera y cómoda, ideal para climas cálidos y estilo urbano.",
