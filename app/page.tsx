@@ -56,43 +56,63 @@ const WOMPI_PUBLIC_KEY =
 
 const PRODUCTS: Product[] = [
   {
-    id: "set-aym-blanco",
-    name: "Set ETERNUM Essential Blanco",
+    id: "set-aym-azul",
+    name: "Set ETERNUM Azul",
     category: "Conjuntos",
     priceCop: 100000,
-    image: "/portada.jpg",
+    image: "/azul.jpg",
     description:
       "Conjunto de camiseta y pantaloneta con acabado limpio, caída estructurada y detalle minimalista para uso diario.",
     sizes: ["S", "M", "L", "XL"],
   },
   {
-    id: "set-aym-terracota",
-    name: "Set ETERNUM Terracota & Arena",
+    id: "set-aym-cafe",
+    name: "Set ETERNUM Café",
     category: "Conjuntos",
     priceCop: 115000,
-    image: "/portada.jpg",
+    image: "/cafe.jpg",
     description:
-      "Combinación en tonos tierra y azul profundo con tela suave de alta densidad y ajuste cómodo.",
+      "Combinación en tono café con tela suave de alta densidad y ajuste cómodo.",
     sizes: ["S", "M", "L", "XL"],
   },
   {
-    id: "camiseta-aym-white",
-    name: "Camiseta ETERNUM Studio White",
+    id: "set-aym-caqui",
+    name: "Set ETERNUM Caqui",
+    category: "Conjuntos",
+    priceCop: 115000,
+    image: "/caqui.jpg",
+    description:
+      "Diseño versátil en tono caqui con corte moderno y confección cuidada.",
+    sizes: ["S", "M", "L", "XL"],
+  },
+  {
+    id: "set-aym-negro-onix",
+    name: "Set ETERNUM Negro Ónix",
+    category: "Conjuntos",
+    priceCop: 120000,
+    image: "/negro-onix.jpg",
+    description:
+      "Edición oscura de presencia sobria y elegante para uso diario o salidas nocturnas.",
+    sizes: ["S", "M", "L", "XL"],
+  },
+  {
+    id: "camiseta-aym-rojo",
+    name: "Camiseta ETERNUM Rojo",
     category: "Camisetas",
     priceCop: 65000,
-    image: "/portada.jpg",
+    image: "/rojo.jpg",
     description:
-      "Camiseta unisex de algodón premium con corte moderno y estampado discreto.",
+      "Camiseta unisex de algodón con caída limpia y detalle discreto.",
     sizes: ["S", "M", "L", "XL"],
   },
   {
-    id: "short-aym-classic",
-    name: "Pantaloneta ETERNUM Classic",
+    id: "short-aym-rosado",
+    name: "Pantaloneta ETERNUM Rosado",
     category: "Shorts",
     priceCop: 60000,
-    image: "/portada.jpg",
+    image: "/rosado.jpg",
     description:
-      "Pantaloneta ligera con cintura ajustable y diseño versátil para climas cálidos y urbanos.",
+      "Pantaloneta ligera y cómoda, ideal para climas cálidos y estilo urbano.",
     sizes: ["S", "M", "L", "XL"],
   },
 ];
@@ -110,10 +130,12 @@ export default function HomePage() {
     "Todos" | "Conjuntos" | "Shorts" | "Camisetas"
   >("Todos");
   const [selectedSizes, setSelectedSizes] = useState<Record<string, string>>({
-    "set-aym-blanco": "M",
-    "set-aym-terracota": "M",
-    "camiseta-aym-white": "M",
-    "short-aym-classic": "M",
+    "set-aym-azul": "M",
+    "set-aym-cafe": "M",
+    "set-aym-caqui": "M",
+    "set-aym-negro-onix": "M",
+    "camiseta-aym-rojo": "M",
+    "short-aym-rosado": "M",
   });
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -194,7 +216,12 @@ export default function HomePage() {
       return;
     }
 
-    if (!fullName.trim() || !email.trim() || !phoneNumber.trim() || !addressLine1.trim()) {
+    if (
+      !fullName.trim() ||
+      !email.trim() ||
+      !phoneNumber.trim() ||
+      !addressLine1.trim()
+    ) {
       setStatusMessage("Completa nombre, correo, teléfono y dirección de envío.");
       return;
     }
