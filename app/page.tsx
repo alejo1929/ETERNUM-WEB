@@ -16,6 +16,7 @@ declare global {
         email?: string;
         fullName?: string;
         phoneNumber?: string;
+        phoneNumberPrefix?: string;
         legalId?: string;
         legalIdType?: string;
       };
@@ -427,6 +428,7 @@ export default function Home() {
           email: datosEnvio.correo || undefined,
           fullName: datosEnvio.nombre,
           phoneNumber: datosEnvio.telefono,
+          phoneNumberPrefix: "+57",
           legalId: datosEnvio.cedula,
           legalIdType: "CC"
         }
