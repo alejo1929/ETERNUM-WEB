@@ -317,7 +317,7 @@ export default function Home() {
 
   const NUMERO_WHATSAPP_TIENDA = "573144386824";
   const WOMPI_PUBLIC_KEY =
-    process.env.NEXT_PUBLIC_WOMPI_PUBLIC_KEY || "pub_prod_b7gj9S8keQypRkwnPg9MWk1Rk0MZqh0";
+    process.env.NEXT_PUBLIC_WOMPI_PUBLIC_KEY || "pub_prod_b7gj9S8keQypRkwnPg9MZWk1RkOMZqhO";
 
   const [datosEnvio, setDatosEnvio] = useState<DatosEnvio>({
     nombre: "",
