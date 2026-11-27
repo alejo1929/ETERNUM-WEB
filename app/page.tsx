@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 
 const UNIT_PRICE_COP = 100000;
+const WHATSAPP_NUMBER = "573144386824";
 
 type Product = {
   id: string;
@@ -176,6 +177,22 @@ export default function HomePage() {
 
   const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
 
+  const whatsappMessage =
+    cart.length > 0
+      ? `Hola ETERNUM, quiero pedir ayuda con mi pedido (${formatCop(
+          totalCop
+        )} - envío gratis): ${cart
+          .map(
+            (item) =>
+              `${item.product.name} [Talla ${item.size}] x${item.quantity}`
+          )
+          .join(", ")}`
+      : "Hola ETERNUM, quiero información sobre los conjuntos, camisetas y pantalonetas a $100.000 COP con envío gratis.";
+
+  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+    whatsappMessage
+  )}`;
+
   const handleAddToCart = (product: Product) => {
     const chosenSize = selectedSizes[product.id] || product.sizes[0] || "M";
     setCart((prev) => {
@@ -342,13 +359,24 @@ export default function HomePage() {
             </span>
           </div>
 
-          <button
-            type="button"
-            onClick={() => setIsCartOpen(true)}
-            className="rounded-full border border-neutral-700 bg-neutral-900 px-4 py-2 text-sm font-medium text-white transition hover:border-white hover:bg-neutral-800"
-          >
-            Tu Carrito ({totalItems})
-          </button>
+          <div className="flex items-center gap-2 sm:gap-3">
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border border-emerald-600/60 bg-emerald-950/40 px-3.5 py-2 text-xs sm:text-sm font-medium text-emerald-300 transition hover:border-emerald-400 hover:bg-emerald-900/50"
+            >
+              WhatsApp
+            </a>
+
+            <button
+              type="button"
+              onClick={() => setIsCartOpen(true)}
+              className="rounded-full border border-neutral-700 bg-neutral-900 px-4 py-2 text-sm font-medium text-white transition hover:border-white hover:bg-neutral-800"
+            >
+              Tu Carrito ({totalItems})
+            </button>
+          </div>
         </div>
       </header>
 
@@ -377,6 +405,14 @@ export default function HomePage() {
               className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-neutral-950 transition hover:bg-neutral-200"
             >
               Ver Colección
+            </a>
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border border-neutral-600 bg-neutral-950/70 px-6 py-3 text-sm font-semibold text-white transition hover:border-white hover:bg-neutral-900"
+            >
+              Escribir por WhatsApp
             </a>
           </div>
         </div>
@@ -487,6 +523,26 @@ export default function HomePage() {
           })}
         </div>
       </main>
+
+      {/* Botón flotante de WhatsApp */}
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Contactar por WhatsApp a ETERNUM"
+        className="fixed bottom-5 right-5 z-40 flex items-center gap-2.5 rounded-full border border-emerald-400/40 bg-emerald-600 px-4 py-3 text-sm font-semibold text-white shadow-lg transition hover:scale-105 hover:bg-emerald-500"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          className="h-5 w-5 shrink-0"
+          aria-hidden="true"
+        >
+          <path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.766.469 3.484 1.359 5l-1.422 5.188 5.313-1.391c1.453.797 3.078 1.219 4.719 1.219 5.516 0 9.969-4.453 9.969-9.969s-4.453-10.015-9.969-10.015zm5.813 14.156c-.25.703-1.438 1.344-1.984 1.422-.516.078-1.172.109-1.891-.125-.438-.141-1-.328-1.734-.641-3.047-1.313-5.031-4.391-5.188-4.594-.156-.203-1.234-1.641-1.234-3.125s.781-2.219 1.063-2.516c.281-.297.609-.375.813-.375s.406 0 .594.016c.188.016.438-.078.688.516.25.609.859 2.094.938 2.25.078.156.125.344.031.547-.094.203-.141.328-.281.5-.141.172-.297.391-.422.516-.141.141-.281.297-.125.578.156.281.703 1.156 1.5 1.875 1.031.922 1.906 1.203 2.172 1.344.266.141.422.125.578-.078.156-.203.672-.781.859-1.047.188-.266.359-.219.609-.125s1.609.766 1.891.906c.281.141.469.203.531.328.078.125.078.719-.172 1.422z" />
+        </svg>
+        <span className="hidden sm:inline">WhatsApp</span>
+      </a>
 
       {/* Modal / Panel lateral del carrito y pago con Wompi */}
       {isCartOpen && (
@@ -642,6 +698,15 @@ export default function HomePage() {
                       ? "ABRIENDO WOMPI..."
                       : "Confirmar y Pagar con Wompi"}
                   </button>
+
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2.5 block w-full rounded-full border border-emerald-600/60 bg-emerald-950/40 py-2.5 text-center text-xs font-semibold text-emerald-300 transition hover:border-emerald-400 hover:bg-emerald-900/50"
+                  >
+                    ¿Dudas con tu talla o pedido? Escríbenos por WhatsApp
+                  </a>
                 </div>
               </form>
             </div>
